@@ -1,0 +1,33 @@
+{
+  "name": "jobboard-js-sdk",
+  "version": "0.1.0",
+  "description": "Job Board JavaScript Client SDK",
+  "main": "dist/index.umd.js",
+  "browser": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
+  "es2015": "dist/index.esm.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "rimraf dist && rollup -c"
+  },
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andyfusniak/jobboard-js-sdk.git"
+  },
+  "author": "Andy Fusniak",
+  "bugs": {
+    "url": "https://github.com/andyfusniak/jobboard-js-sdk/issues"
+  },
+  "homepage": "https://github.com/andyfusniak/jobboard-js-sdk#readme",
+  "devDependencies": {
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-replace": "^2.4.2",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.44.0",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}
