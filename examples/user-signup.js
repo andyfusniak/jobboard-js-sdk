@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 const JobBoard = require('..');
 const jbclient = JobBoard({
-  endpoint: 'https://jobboard-webapi-staging.andyfusniak.com',
+  endpoint: process.env.JOBBOARD_ENDPOINT || 'https://jobboard-webapi-staging.andyfusniak.com',
   tokenFn: function() { return 'fake-token'; },
   fetch: fetch
 });
@@ -12,7 +12,8 @@ const jbclient = JobBoard({
     params = {
       firstname: 'Jack',
       lastname: 'Sparrow',
-      email: 'jack.sparrow@example.com',
+      role: 'advertiser',
+      email: 'jack.sparrow+test3@example.com',
       password: 'testtest12345'
     };
     const user = await jbclient.auth.userSignUp(params);
