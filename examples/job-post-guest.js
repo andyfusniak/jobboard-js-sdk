@@ -4,7 +4,7 @@ const token = process.env.JWT || 'fake-token';
 
 const JobBoard = require('..');
 const jbclient = JobBoard({
-  endpoint: 'https://jobboard-webapi-staging.andyfusniak.com',
+  endpoint: process.env.JOBBOARD_ENDPOINT || 'https://jobboard-webapi-staging.andyfusniak.com',
   tokenFn: function() { return token; },
   fetch: fetch
 });
@@ -13,7 +13,7 @@ const jbclient = JobBoard({
   try {
     params = {
       // jobId: null,
-      uri: 'senior-golang-developer-2',
+      uri: 'senior-golang-developer-4',
       companyName: 'Big Software Inc.'
     };
     const job = await jbclient.jobs.createJob(params);

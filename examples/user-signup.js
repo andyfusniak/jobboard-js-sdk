@@ -12,8 +12,8 @@ const jbclient = JobBoard({
     params = {
       firstname: 'Jack',
       lastname: 'Sparrow',
-      role: 'advertiser',
-      email: 'jack.sparrow+test3@example.com',
+      role: 'user',
+      email: 'jack.sparrow+test8@example.com',
       password: 'testtest12345'
     };
     const user = await jbclient.auth.userSignUp(params);
