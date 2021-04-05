@@ -4,18 +4,15 @@ const JobBoard = require('..');
 
 const jbclient = JobBoard({
   endpoint: process.env.JOBBOARD_ENDPOINT || 'http://localhost:8080',
-  tokenFn: function() { return token; },
   fetch: fetch,
+  tokenFn: function() { return token; },
   debug: true
 });
 
 (async() => {
   try {
-    const querySelector = {
-      // limit: 3
-    };
-    const jobs = await jbclient.jobs.queryJobs(querySelector);
-    console.log(jobs);
+    const autoconf = await jbclient.autoconf.getFirebaseConfig();
+    console.log(autoconf);
   } catch (err) {
     console.error(err);
   }

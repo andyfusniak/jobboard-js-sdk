@@ -4,7 +4,7 @@ const token = process.env.JWT || 'fake-token';
 
 const JobBoard = require('..');
 const jbclient = JobBoard({
-  endpoint: process.env.JOBBOARD_ENDPOINT || 'https://jobboard-webapi-staging.andyfusniak.com',
+  endpoint: process.env.JOBBOARD_ENDPOINT || 'http://localhost:8080',
   tokenFn: function() { return token; },
   fetch: fetch
 });
