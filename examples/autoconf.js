@@ -1,19 +1,20 @@
 const fetch = require('node-fetch');
-const token = process.env.JWT || 'fake-token';
-const JobBoard = require('..');
+const jobboard = require('..');
 
-const jbclient = JobBoard({
+jobboard.init({
   endpoint: process.env.JOBBOARD_ENDPOINT || 'http://localhost:8080',
   fetch: fetch,
-  tokenFn: function() { return token; },
   debug: true
 });
 
 (async() => {
   try {
-    const autoconf = await jbclient.autoconf.getFirebaseConfig();
+    const autoconf = await jobboard.autoconf.getFirebaseConfig();
     console.log(autoconf);
   } catch (err) {
+    console.error(err.name);
+    console.error(err.status);
+    console.error(err.code);
     console.error(err);
   }
 })();

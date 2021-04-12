@@ -1,24 +1,32 @@
 const fetch = require('node-fetch');
+const token = process.env.JWT || 'fake-token';
+const jobboard = require('..');
 
-const JobBoard = require('..');
-const jbclient = JobBoard({
+jobboard.init({
   endpoint: process.env.JOBBOARD_ENDPOINT || 'http://localhost:8080',
-  tokenFn: function() { return 'fake-token'; },
-  fetch: fetch
+  fetch: fetch,
+  debug: true
 });
 
 (async() => {
   try {
+    jobboard.registerIdToken(function () {
+      return token;
+    });
+
     params = {
       firstname: 'Jack',
-      lastname: 'Sparrow',
+      lastname: 'Sparrow Nine',
       role: 'user',
-      email: 'jack.sparrow+test8@example.com',
+      email: 'jack.sparrow+test9@example.com',
       password: 'testtest12345'
     };
-    const user = await jbclient.auth.userSignUp(params);
+    const user = await jobboard.auth.userSignUp(params);
     console.log(user);
   } catch (err) {
+    console.error(err.name);
+    console.error(err.status);
+    console.error(err.code);
     console.error(err);
   }
 })();
